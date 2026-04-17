@@ -1,75 +1,121 @@
 import { AppLayout } from "@/components/layout/app-layout"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Shield, FileCheck, AlertTriangle, TrendingUp } from "lucide-react"
+import { InsuranceStatusCards } from "@/components/insurance/insurance-status-cards"
+import { SmartClaimCard } from "@/components/insurance/smart-claim-card"
+import { BlockchainDetailsCard } from "@/components/insurance/blockchain-details-card"
+import { Shield, Leaf } from "lucide-react"
 
 export default function InsurancePage() {
   return (
     <AppLayout>
       <div className="px-4 py-6 md:px-6 lg:px-8">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold tracking-tight md:text-3xl">Insurance</h1>
-          <p className="text-muted-foreground mt-1">Manage your crop insurance policies and coverage</p>
+        {/* Header */}
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+              <Shield className="h-5 w-5 text-primary" />
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold tracking-tight md:text-3xl">Smart Crop Insurance</h1>
+              <p className="text-muted-foreground mt-0.5">
+                Blockchain-powered agricultural insurance with automated claims
+              </p>
+            </div>
+          </div>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Active Policies</CardTitle>
-              <Shield className="h-4 w-4 text-primary" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">3</div>
-              <p className="text-xs text-muted-foreground">All policies current</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Total Coverage</CardTitle>
-              <FileCheck className="h-4 w-4 text-primary" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">$1.2M</div>
-              <p className="text-xs text-muted-foreground">Across all fields</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Risk Score</CardTitle>
-              <AlertTriangle className="h-4 w-4 text-accent" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">Low</div>
-              <p className="text-xs text-muted-foreground">Based on weather data</p>
-            </CardContent>
-          </Card>
-          
-          <Card>
-            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-              <CardTitle className="text-sm font-medium">Premium Savings</CardTitle>
-              <TrendingUp className="h-4 w-4 text-primary" />
-            </CardHeader>
-            <CardContent>
-              <div className="text-2xl font-bold">12%</div>
-              <p className="text-xs text-muted-foreground">From AI monitoring</p>
-            </CardContent>
-          </Card>
+        {/* Status Cards */}
+        <section className="mb-8">
+          <InsuranceStatusCards />
+        </section>
+
+        {/* Main Content Grid */}
+        <div className="grid gap-6 lg:grid-cols-2">
+          {/* Smart Claim Card */}
+          <section>
+            <SmartClaimCard />
+          </section>
+
+          {/* Blockchain Details */}
+          <section>
+            <BlockchainDetailsCard />
+          </section>
         </div>
 
-        <div className="mt-6">
-          <Card>
-            <CardHeader>
-              <CardTitle>Policy Overview</CardTitle>
-              <CardDescription>Your active insurance policies and coverage details</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <div className="text-muted-foreground text-center py-12">
-                Policy details and management features coming soon
+        {/* Coverage Overview */}
+        <section className="mt-8">
+          <div className="rounded-2xl border border-border bg-card overflow-hidden">
+            <div className="flex items-center gap-3 px-6 py-4 border-b border-border">
+              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10">
+                <Leaf className="h-5 w-5 text-primary" />
               </div>
-            </CardContent>
-          </Card>
-        </div>
+              <div>
+                <h3 className="font-semibold text-foreground">Coverage Overview</h3>
+                <p className="text-xs text-muted-foreground">Your current policy details</p>
+              </div>
+            </div>
+            
+            <div className="p-6">
+              <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+                <div className="rounded-xl bg-secondary/50 p-4 space-y-1">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Policy Number
+                  </span>
+                  <p className="font-mono font-semibold text-foreground">CW-2024-0847</p>
+                </div>
+                
+                <div className="rounded-xl bg-secondary/50 p-4 space-y-1">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Total Coverage
+                  </span>
+                  <p className="font-semibold text-foreground">$1,200,000</p>
+                </div>
+                
+                <div className="rounded-xl bg-secondary/50 p-4 space-y-1">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Premium
+                  </span>
+                  <p className="font-semibold text-foreground">$2,400/month</p>
+                </div>
+                
+                <div className="rounded-xl bg-secondary/50 p-4 space-y-1">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    Valid Until
+                  </span>
+                  <p className="font-semibold text-foreground">Dec 31, 2024</p>
+                </div>
+              </div>
+
+              <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                <div className="rounded-xl bg-emerald-500/10 border border-emerald-500/20 p-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-foreground">Drought Protection</span>
+                    <span className="text-xs font-semibold text-emerald-500 px-2 py-0.5 rounded-full bg-emerald-500/15">
+                      Covered
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="rounded-xl bg-emerald-500/10 border border-emerald-500/20 p-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-foreground">Pest Damage</span>
+                    <span className="text-xs font-semibold text-emerald-500 px-2 py-0.5 rounded-full bg-emerald-500/15">
+                      Covered
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="rounded-xl bg-emerald-500/10 border border-emerald-500/20 p-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm text-foreground">Weather Events</span>
+                    <span className="text-xs font-semibold text-emerald-500 px-2 py-0.5 rounded-full bg-emerald-500/15">
+                      Covered
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     </AppLayout>
   )
