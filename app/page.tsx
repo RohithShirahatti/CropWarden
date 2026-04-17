@@ -1,4 +1,4 @@
-import { DashboardHeader } from "@/components/dashboard/header"
+import { AppLayout } from "@/components/layout/app-layout"
 import { SensorCards } from "@/components/dashboard/sensor-cards"
 import { FieldGrid } from "@/components/dashboard/field-grid"
 import { ControlPanel } from "@/components/dashboard/control-panel"
@@ -10,12 +10,10 @@ import { ToastDemo } from "@/components/dashboard/toast-demo"
 
 export default function CropWardenDashboard() {
   return (
-    <div className="min-h-screen bg-background">
-      <DashboardHeader />
-      
-      <main className="container mx-auto px-4 py-6 md:px-6 lg:px-8">
+    <AppLayout>
+      <div className="px-4 py-6 md:px-6 lg:px-8">
         <div className="mb-6">
-          <h1 className="text-2xl font-bold tracking-tight md:text-3xl">CropWarden Dashboard</h1>
+          <h1 className="text-2xl font-bold tracking-tight md:text-3xl">Dashboard</h1>
           <p className="text-muted-foreground mt-1">AI-powered agricultural monitoring and management system</p>
         </div>
 
@@ -63,11 +61,11 @@ export default function CropWardenDashboard() {
             <ToastDemo />
           </section>
         </div>
-      </main>
+      </div>
 
       {/* Footer */}
       <footer className="border-t border-border mt-8">
-        <div className="container mx-auto px-4 py-6 md:px-6 lg:px-8">
+        <div className="px-4 py-6 md:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
             <p>CropWarden AI Agricultural System</p>
             <div className="flex items-center gap-4">
@@ -80,6 +78,6 @@ export default function CropWardenDashboard() {
           </div>
         </div>
       </footer>
-    </div>
+    </AppLayout>
   )
 }
